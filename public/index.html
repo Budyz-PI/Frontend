@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="NFTs with seamless Pi Network integration."
+    />
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/Logo02.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="BUDYZ NFT Portal" />
+    <meta property="og:description" content="NFTs with seamless Pi Network integration." />
+    <meta property="og:image" content="/Logo02.png" />
+    <meta property="og:url" content="https://budyz.xyz/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <title>BUDYZ NFT Portal</title>
+
+    <!-- Pi Network SDK -->
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+      body {
+        min-height: 100vh;
+        background: url("/Logo02.png") no-repeat center center fixed;
+        background-size: cover;
+        position: relative;
+      }
+      #root {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.75);
+        z-index: 1;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="overlay"></div>
+    <div id="root"></div>
+  </body>
+</html>

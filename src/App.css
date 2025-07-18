@@ -1,0 +1,52 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: white;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  /* Removed spinning animation for a static logo */
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  width: 100vw;
+}
+
+button {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1em;
+  transition: background 0.2s;
+}
+
+button:hover, button:focus {
+  background-color: #21a1f3;
+}
+
+p {
+  margin: 1em 0;
+}
+
+/* Remove spinning keyframes if present */
