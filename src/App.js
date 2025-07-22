@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "./Logo02.png";
 import "./App.css";
-import NFTPurchaseForm from "./NFTPurchaseForm"; // Import the form!
+import NFTPurchaseForm from "./NFTPurchaseForm";
 
 function App() {
   const [piUser, setPiUser] = useState(null);
@@ -9,25 +9,42 @@ function App() {
   const [backendMessage, setBackendMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Handle Pi Network login
   const handlePiLogin = () => {
     if (!window.Pi) {
       setError("Pi Network SDK not loaded. Please refresh the page.");
       return;
     }
+
     window.Pi.authenticate(
       ["username"],
       function (authResult) {
         setPiUser(authResult.user);
         setError(null);
+
+        // ✅ Send JWT to backend for verification
+        fetch("/api/verify-user", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ jwt: authResult.accessToken }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              console.log("✅ User verified on backend:", data.user);
+            } else {
+              setError("Backend verification failed.");
+            }
+          })
+          .catch((err) => {
+            setError("Backend verification error: " + err.message);
+          });
       },
       function (error) {
         setError("Pi authentication failed: " + error);
-      },
+      }
     );
   };
 
-  // Fetch backend message after login
   useEffect(() => {
     if (piUser) {
       setLoading(true);
@@ -72,7 +89,6 @@ function App() {
             )}
             {error && <p style={{ color: "salmon" }}>{error}</p>}
 
-            {/* NFT Purchase Form goes here */}
             <div style={{ marginTop: "2rem" }}>
               <NFTPurchaseForm />
             </div>
