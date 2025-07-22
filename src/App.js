@@ -10,18 +10,28 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const handlePiLogin = () => {
+    alert("✅ Login button clicked!");
+    console.log("✅ Login button clicked!");
+
     if (!window.Pi) {
+      alert("❌ Pi Network SDK not loaded. Please refresh the page.");
+      console.error("❌ Pi Network SDK not loaded.");
       setError("Pi Network SDK not loaded. Please refresh the page.");
       return;
     }
 
+    alert("✅ Pi SDK found. Starting authentication...");
+    console.log("✅ Pi SDK found. Starting authentication...");
+
     window.Pi.authenticate(
       ["username"],
       function (authResult) {
+        alert("✅ Authentication succeeded: " + JSON.stringify(authResult));
+        console.log("✅ Authentication succeeded:", authResult);
+
         setPiUser(authResult.user);
         setError(null);
 
-        // ✅ Send JWT to backend for verification
         fetch("/api/verify-user", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -33,13 +43,17 @@ function App() {
               console.log("✅ User verified on backend:", data.user);
             } else {
               setError("Backend verification failed.");
+              console.error("❌ Backend verification failed.");
             }
           })
           .catch((err) => {
             setError("Backend verification error: " + err.message);
+            console.error("❌ Backend verification error:", err);
           });
       },
       function (error) {
+        alert("❌ Pi authentication failed: " + error);
+        console.error("❌ Pi authentication failed:", error);
         setError("Pi authentication failed: " + error);
       }
     );
@@ -70,7 +84,7 @@ function App() {
             >
               Login with Pi Network
             </button>
-            {error && <p style={{ color: "salmon" }}>{error}</p>}
+            {error && <p style={{ color: "salmon", marginTop: "1em" }}>{error}</p>}
           </>
         ) : (
           <>
@@ -87,7 +101,7 @@ function App() {
                 </p>
               )
             )}
-            {error && <p style={{ color: "salmon" }}>{error}</p>}
+            {error && <p style={{ color: "salmon", marginTop: "1em" }}>{error}</p>}
 
             <div style={{ marginTop: "2rem" }}>
               <NFTPurchaseForm />
