@@ -23,9 +23,16 @@ function App() {
     alert("✅ Pi SDK found. Starting authentication...");
     console.log("✅ Pi SDK found. Starting authentication...");
 
+    let timeout = setTimeout(() => {
+      alert("❌ Authentication timed out. Please try again.");
+      console.error("❌ Authentication timed out.");
+      setError("Authentication timed out. Please try again.");
+    }, 5000);
+
     window.Pi.authenticate(
       ["username"],
       function (authResult) {
+        clearTimeout(timeout);
         alert("✅ Authentication succeeded: " + JSON.stringify(authResult));
         console.log("✅ Authentication succeeded:", authResult);
 
@@ -52,6 +59,7 @@ function App() {
           });
       },
       function (error) {
+        clearTimeout(timeout);
         alert("❌ Pi authentication failed: " + error);
         console.error("❌ Pi authentication failed:", error);
         setError("Pi authentication failed: " + error);
