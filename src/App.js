@@ -10,25 +10,15 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const handlePiLogin = () => {
-    alert("✅ Login button clicked!");
-    console.log("✅ Login button clicked!");
-
     if (!window.Pi) {
-      alert("❌ Pi Network SDK not loaded. Please refresh the page.");
       console.error("❌ Pi Network SDK not loaded.");
       setError("Pi Network SDK not loaded. Please refresh the page.");
       return;
     }
 
-    alert("✅ Pi SDK found. Starting authentication...");
-    console.log("✅ Pi SDK found. Starting authentication...");
-
     window.Pi.authenticate(
       ["username"],
       function (authResult) {
-        alert("✅ Authentication succeeded: " + JSON.stringify(authResult));
-        console.log("✅ Authentication succeeded:", authResult);
-
         setPiUser(authResult.user);
         setError(null);
 
@@ -39,9 +29,7 @@ function App() {
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.success) {
-              console.log("✅ User verified on backend:", data.user);
-            } else {
+            if (!data.success) {
               setError("Backend verification failed.");
               console.error("❌ Backend verification failed.");
             }
@@ -52,7 +40,6 @@ function App() {
           });
       },
       function (error) {
-        alert("❌ Pi authentication failed: " + error);
         console.error("❌ Pi authentication failed:", error);
         setError("Pi authentication failed: " + error);
       }
