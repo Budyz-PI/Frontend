@@ -8,11 +8,22 @@ function App() {
   const [error, setError] = useState(null);
   const [backendMessage, setBackendMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [sdkReady, setSdkReady] = useState(false);
+
+  // Check if Pi SDK is available
+  useEffect(() => {
+    if (window.Pi) {
+      console.log("✅ Pi SDK detected.");
+      setSdkReady(true);
+    } else {
+      console.warn("❌ Pi SDK not detected. Check index.html for script inclusion.");
+    }
+  }, []);
 
   const handlePiLogin = () => {
     if (!window.Pi) {
       console.error("❌ Pi Network SDK not loaded.");
-      setError("Pi Network SDK not loaded. Please refresh the page.");
+      setError("Pi Network SDK not loaded. Try opening in Pi Browser or refresh the page.");
       return;
     }
 
@@ -30,13 +41,13 @@ function App() {
           .then((res) => res.json())
           .then((data) => {
             if (!data.success) {
-              setError("Backend verification failed.");
               console.error("❌ Backend verification failed.");
+              setError("Backend verification failed.");
             }
           })
           .catch((err) => {
+            console.error("❌ Backend error:", err);
             setError("Backend verification error: " + err.message);
-            console.error("❌ Backend verification error:", err);
           });
       },
       function (error) {
@@ -63,13 +74,14 @@ function App() {
         <img src={logo} className="App-logo" alt="BUDYZ logo" />
         {!piUser ? (
           <>
-            <h1>Welcome to the BUDYZ NFT Portal — now fresher than ever!</h1>
+            <h1>Welcome to BUDYZ NFT Portal!</h1>
             <p>NFTs with seamless Pi Network integration.</p>
             <button
               onClick={handlePiLogin}
-              style={{ padding: "10px 20px", fontSize: "1rem", marginTop: "1em" }}
+              disabled={!sdkReady}
+              style={{ padding: "10px 20px", fontSize: "1rem", marginTop: "1em", opacity: sdkReady ? 1 : 0.5 }}
             >
-              Login with Pi Network
+              {sdkReady ? "Login with Pi Network" : "Waiting for Pi SDK..."}
             </button>
             {error && <p style={{ color: "salmon", marginTop: "1em" }}>{error}</p>}
           </>
