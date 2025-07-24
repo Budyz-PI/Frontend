@@ -3,11 +3,6 @@ import logo from "./Logo02.png";
 import "./App.css";
 import NFTPurchaseForm from "./NFTPurchaseForm";
 
-// Serve validation-key.txt dynamically
-if (window.location.pathname === "/validation-key.txt") {
-  document.write(process.env.REACT_APP_PI_VALIDATION_KEY);
-}
-
 function App() {
   const [piUser, setPiUser] = useState(null);
   const [error, setError] = useState(null);
