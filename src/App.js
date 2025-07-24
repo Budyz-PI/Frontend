@@ -63,7 +63,7 @@ function App() {
         <img src={logo} className="App-logo" alt="BUDYZ logo" />
         {!piUser ? (
           <>
-            <h1>Welcome to BUDYZ NFT Portal!</h1>
+            <h1>Welcome to the BUDYZ NFT Portal — now fresher than ever!</h1>
             <p>NFTs with seamless Pi Network integration.</p>
             <button
               onClick={handlePiLogin}
