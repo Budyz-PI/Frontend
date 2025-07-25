@@ -10,17 +10,33 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [sdkReady, setSdkReady] = useState(false);
 
-  // Check if Pi SDK is available
+  // Dynamically load Pi SDK
   useEffect(() => {
-    if (window.Pi) {
-      console.log("✅ Pi SDK detected.");
-      setSdkReady(true);
-    } else {
-      console.warn("❌ Pi SDK not detected. Check index.html for script inclusion.");
-    }
+    const loadPiSdk = () => {
+      const script = document.createElement("script");
+      script.src = "https://sdk.minepi.com/pi-sdk.js";
+      script.async = true;
+      script.onload = () => {
+        console.log("✅ Pi SDK dynamically loaded");
+        if (window.Pi) {
+          setSdkReady(true);
+          console.log("✅ Pi SDK initialized:", window.Pi);
+        } else {
+          console.warn("❌ Pi SDK script loaded, but window.Pi is still undefined");
+        }
+      };
+      script.onerror = () => {
+        console.error("❌ Failed to load Pi SDK");
+        setError("Failed to load Pi SDK");
+      };
+      document.body.appendChild(script);
+    };
+
+    loadPiSdk();
   }, []);
 
   const handlePiLogin = () => {
+    console.log("🧪 Attempting Pi login...");
     if (!window.Pi) {
       console.error("❌ Pi Network SDK not loaded.");
       setError("Pi Network SDK not loaded. Try opening in Pi Browser or refresh the page.");
@@ -30,6 +46,7 @@ function App() {
     window.Pi.authenticate(
       ["username"],
       function (authResult) {
+        console.log("✅ Auth success:", authResult);
         setPiUser(authResult.user);
         setError(null);
 
@@ -79,7 +96,12 @@ function App() {
             <button
               onClick={handlePiLogin}
               disabled={!sdkReady}
-              style={{ padding: "10px 20px", fontSize: "1rem", marginTop: "1em", opacity: sdkReady ? 1 : 0.5 }}
+              style={{
+                padding: "10px 20px",
+                fontSize: "1rem",
+                marginTop: "1em",
+                opacity: sdkReady ? 1 : 0.5,
+              }}
             >
               {sdkReady ? "Login with Pi Network" : "Waiting for Pi SDK..."}
             </button>
