@@ -1,7 +1,7 @@
 {
   "name": "Budyz",
   "symbol": "BUDYZ",
-  "description": "The official Budyz token powering a pug-loving, community-first movement.",
+  "description": "Budyz is the official SPL token for a pug-loving, community-first movement on Solana. ... [plus your mint authority policy statement]",
   "image": "https://static.wixstatic.com/media/380960_080c06a2d635451aa188dc611f4cb27e~mv2.png",
   "decimals": 9,
   "seller_fee_basis_points": 0,
