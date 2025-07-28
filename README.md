@@ -2,6 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+---
+
+## Budyz Token Official Links
+
+- 🌐 [Website](https://yourwebsite.com) <!-- Replace with actual site if available -->
+- 🐦 [Twitter (@nftmondo2)](https://twitter.com/nftmondo2)
+- 💻 [GitHub](https://github.com/Budyz-PI/frontend)
+- 🔍 [Solscan – Budyz Token](https://solscan.io/token/3NhWyFxLxHSiBF1AMCXUGgRwK78EG63L7DpybfwERAqy)
+
+---
+
 ## Available Scripts
 
 In the project directory, you can run:
