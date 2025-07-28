@@ -13,6 +13,12 @@
         "type": "image/png"
       }
     ],
-    "category": "image"
+    "category": "image",
+    "creators": [
+      {
+        "address": "3NhWyFxLxHSiBF1AMCXUGgRwK78EG63L7DpybfwERAqy",
+        "share": 100
+      }
+    ]
   }
 }
