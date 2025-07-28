@@ -13,6 +13,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ---
 
+## Mint Authority Policy
+
+The Budyz token mint authority is currently retained by the Budyz Foundation.  
+No new tokens will be minted unless approved by a formal community vote, as outlined in our White Paper.  
+This ensures transparency, trust, and community-driven decision-making for any future changes to the token supply.
+
+---
+
 ## Available Scripts
 
 In the project directory, you can run:
