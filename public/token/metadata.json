@@ -1,0 +1,18 @@
+{
+  "name": "Budyz",
+  "symbol": "BUDYZ",
+  "description": "The official Budyz token powering a pug-loving, community-first movement.",
+  "image": "https://static.wixstatic.com/media/380960_607483dd9f374c4f9c56cc2a7a452d4b~mv2.png",
+  "decimals": 9,
+  "seller_fee_basis_points": 0,
+  "attributes": [],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://static.wixstatic.com/media/380960_607483dd9f374c4f9c56cc2a7a452d4b~mv2.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  }
+}
