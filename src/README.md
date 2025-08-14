@@ -1,82 +1,62 @@
-# Budyz Frontend
+Budyz Frontend
 
-This is the frontend client for the **Budyz** project. The frontend interacts with the Budyz backend and the Pi Network, enabling users to authenticate, view their NFT minting status, and interact with the Budyz ecosystem.
+This is the frontend client for the Budyz project. The frontend interacts with the Budyz backend and the Pi Network, enabling users to authenticate, view their NFT minting status, and interact with the Budyz ecosystem.
 
----
+Features
 
-## Features
+Modern UI built with React, Vue, or your framework of choice
+Pi Network integration for user authentication
+NFT minting interface, allowing users to mint NFTs and view their count
+API communication with the Budyz backend for authentication and NFT supply
+Validation and error handling for user input and API responses
+Environment configuration using a .env file for API base URLs and keys
 
-- **Modern UI**: Built with (React/Vue/your framework here, update as appropriate).
-- **Pi Network Integration**: Supports user authentication via the Pi Network.
-- **NFT Minting Interface**: Allows users to mint NFTs and view their minted count.
-- **API Communication**: Interacts with the Budyz backend for authentication and NFT supply.
-- **Validation & Error Handling**: User-friendly feedback for input and API errors.
-- **Environment Configuration**: Uses `.env` for API base URLs and keys.
+Requirements
 
----
+Node.js version 16 or higher
+npm or yarn
 
-## Requirements
+Getting Started
 
-- Node.js (v16 or above recommended)
-- npm or yarn
+Clone the repository
 
----
+git clone https://github.com/YOUR_USERNAME/budyz-frontend.git
+cd budyz-frontend
 
-## Getting Started
+Install dependencies
 
-1. **Clone the repository**
+npm install
+or
+yarn install
 
-   ```sh
-   git clone https://github.com/YOUR_USERNAME/budyz-frontend.git
-   cd budyz-frontend
-   ```
+Configure environment variables
 
-2. **Install dependencies**
+Create a .env file in the root directory. Example:
 
-   ```sh
-   npm install
-   # or
-   yarn install
-   ```
+REACT_APP_API_BASE_URL=http://localhost:3000
 
-3. **Configure Environment Variables**
+Start the frontend app
 
-   Create a `.env` file in the root directory. Example (adjust as needed):
+npm start
+or
+yarn start
 
-   ```
-   REACT_APP_API_BASE_URL=http://localhost:3000
-   ```
+The app will start in development mode at http://localhost:3000 or http://localhost:5173 for Vite
 
-4. **Start the frontend app**
+File Structure
 
-   ```sh
-   npm start
-   # or
-   yarn start
-   ```
+src         main frontend source code
+public      static assets
+.env        environment variables, do not commit
+.gitignore  files and folders to ignore in version control
+package.json  project dependencies and scripts
 
-   The app will start in development mode (default: [http://localhost:3000](http://localhost:3000) or [http://localhost:5173](http://localhost:5173) for Vite).
+Notes
 
----
+This frontend is designed to work with the Budyz backend. Make sure the backend is running and REACT_APP_API_BASE_URL points to the correct address
+Pi Network authentication is required for core features
+For production builds, use npm run build or yarn build
 
-## File Structure
+License
 
-- `src/` — Main frontend source code.
-- `public/` — Static assets.
-- `.env` — Store environment variables (never commit this file).
-- `.gitignore` — Ensures sensitive/runtime data are not committed.
-- `package.json` — Project dependencies and scripts.
-
----
-
-## Notes
-
-- The frontend is designed to work with the Budyz backend. Ensure the backend is running and `REACT_APP_API_BASE_URL` points to the correct address.
-- Pi Network authentication is required for core features.
-- For production builds, use `npm run build` or `yarn build`.
-
----
-
-## License
-
-[ISC](LICENSE)
+ISC, see LICENSE file for details
