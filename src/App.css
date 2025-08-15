@@ -1,0 +1,36 @@
+/* Existing styles ... */
+
+.spinner {
+  border: 2px solid #e5c81a;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  margin-right: 0.5em;
+  vertical-align: middle;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.input-error {
+  color: #e24c4b;
+  font-size: 1em;
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+
+.status {
+  margin-top: 1em;
+  font-size: 1.05em;
+  text-align: center;
+}
+
+.pi-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Add your existing styles below or above as needed */
