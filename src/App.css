@@ -22,15 +22,43 @@
   font-weight: 500;
 }
 
-.status {
-  margin-top: 1em;
-  font-size: 1.05em;
-  text-align: center;
+/* Center the main app container using flexbox */
+.App {
+  min-height: 100vh;
+  background: #f6e9c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Center the content card and its children */
+.content-card {
+  max-width: 400px;
+  background: #fffbe9;
+  border-radius: 16px;
+  padding: 2em 1.5em 2em 1.5em;
+  box-shadow: 0 0 24px #53377144;
+  text-align: center; /* Center all inline and inline-block children */
+  margin: 2em auto;
+}
+
+/* Style and center the Pi login button */
+.pi-button {
+  display: inline-block;
+  margin: 2em auto 0 auto;
+  padding: 0.8em 2em;
+  font-size: 1.1em;
+  background: #533771;
+  color: #e5c81a;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0004;
+  font-weight: bold;
+  transition: background 0.2s;
 }
 
 .pi-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
-
-/* Add your existing styles below or above as needed */
