@@ -24,47 +24,66 @@ function App() {
     if (!window.Pi) {
       setStatus("Pi SDK not detected. Please open in Pi Browser.");
       setPiReady(false);
+      console.log("Pi SDK not detected (window.Pi is undefined)");
       return;
     }
     try {
       window.Pi.init({ version: "2.0", sandbox });
       setPiReady(true);
+      console.log("Pi SDK initialized, sandbox:", sandbox);
     } catch (e) {
       setStatus(`Pi SDK init error: ${e.message}`);
       setPiReady(false);
+      console.log("Pi SDK init error:", e);
     }
   }, [sandbox]);
 
   const handlePiLogin = async () => {
     if (!window.Pi) {
       setStatus("Pi SDK not available. Use Pi Browser.");
+      console.log("Pi SDK not available at login.");
       return;
     }
     setBusy(true);
     setStatus("Authenticating…");
     try {
+      console.log("Starting Pi.authenticate");
       const authResult = await window.Pi.authenticate(
         ["username", "payments"],
         (payment) => {
           setStatus("Incomplete payment found — you can try again.");
+          console.log("Incomplete payment callback fired");
         }
       );
+      console.log("Got authResult:", authResult);
+      if (!authResult || !authResult.accessToken) {
+        setStatus("Authentication failed: No access token returned.");
+        console.log("Authentication failed: No access token in authResult.");
+        setBusy(false);
+        return;
+      }
       // Send JWT to backend for verification
       const jwt = authResult.accessToken;
+      console.log("Sending JWT to backend");
       const backendResponse = await fetch("https://budyz-pi-backend.onrender.com/api/verify-user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ jwt })
       });
+      console.log("Got backend response:", backendResponse);
       const data = await backendResponse.json();
+      console.log("Backend response JSON:", data);
       if (data.success) {
         setUser(data.user);
         setStatus("Login successful! Backend verified.");
+        console.log("Login successful!");
       } else {
         setStatus("Backend verification failed: " + (data.error || "Unknown error"));
+        console.log("Backend verification failed:", data.error);
       }
     } catch (error) {
       setStatus(`Auth error: ${error.message}`);
+      console.log("Auth error:", error);
     }
     setBusy(false);
   };
