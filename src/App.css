@@ -1,0 +1,64 @@
+/* Existing styles ... */
+
+.spinner {
+  border: 2px solid #e5c81a;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  margin-right: 0.5em;
+  vertical-align: middle;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.input-error {
+  color: #e24c4b;
+  font-size: 1em;
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+
+/* Center the main app container using flexbox */
+.App {
+  min-height: 100vh;
+  background: #f6e9c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Center the content card and its children */
+.content-card {
+  max-width: 400px;
+  background: #fffbe9;
+  border-radius: 16px;
+  padding: 2em 1.5em 2em 1.5em;
+  box-shadow: 0 0 24px #53377144;
+  text-align: center; /* Center all inline and inline-block children */
+  margin: 2em auto;
+}
+
+/* Style and center the Pi login button */
+.pi-button {
+  display: inline-block;
+  margin: 2em auto 0 auto;
+  padding: 0.8em 2em;
+  font-size: 1.1em;
+  background: #533771;
+  color: #e5c81a;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0004;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.pi-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
