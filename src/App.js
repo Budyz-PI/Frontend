@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import "./App.css";
 
-// NFT info — update for each new NFT!
 const nft = {
   name: "PI Edition Badge",
   ownerShort: "0x51a8...4865",
@@ -112,7 +111,7 @@ function App() {
   return (
     <div className="App" style={{ minHeight: "100vh", background: "#f6e9c7" }}>
       <div className="content-card" style={{ marginTop: "5vh" }}>
-        {/* LOGO restored as in your old App.js */}
+        {/* LOGO */}
         <img
           src="/Logo02.png"
           alt="PI Edition Badge Portal"
@@ -126,6 +125,20 @@ function App() {
             marginRight: "auto"
           }}
         />
+        {/* WELCOME TEXT */}
+        <h2
+          style={{
+            color: "#533771",
+            fontWeight: 700,
+            fontSize: "2em",
+            textAlign: "center",
+            margin: "0 0 1.2em 0",
+            letterSpacing: "2px",
+            textShadow: "0 2px 16px #bfa14b"
+          }}
+        >
+          Welcome
+        </h2>
         {stage === 1 && (
           <>
             {/* NFT Info */}
@@ -144,9 +157,7 @@ function App() {
               <p style={{ color: "#e5c81a" }}>
                 Owner: <a href={nft.ownerLink} target="_blank" rel="noopener noreferrer" style={{ color: "#e5c81a", textDecoration: "underline", fontWeight: "bold" }}>{nft.ownerShort}</a>
               </p>
-              <div style={{ marginTop: "1em", fontWeight: "bold", color: "#e5c81a" }}>
-                Price: {nft.price} PI
-              </div>
+              {/* Price REMOVED from here */}
             </div>
             {/* EVM input and confirmation */}
             <div style={{ margin: "1em auto", maxWidth: 340, textAlign: "center" }}>
@@ -196,6 +207,19 @@ function App() {
         )}
         {stage === 2 && (
           <div style={{ margin: "2em auto", maxWidth: 340, textAlign: "center" }}>
+            {/* Price added here */}
+            <div style={{
+              background: "#533771",
+              color: "#e5c81a",
+              borderRadius: "10px",
+              padding: "0.8em",
+              marginBottom: "1.5em",
+              fontWeight: "bold",
+              fontSize: "1.12em",
+              boxShadow: "0 0 8px #533771"
+            }}>
+              Price: {nft.price} PI
+            </div>
             <button
               onClick={handleLoginAndPurchase}
               style={{
